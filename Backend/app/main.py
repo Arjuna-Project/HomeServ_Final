@@ -1,10 +1,11 @@
+from dotenv import load_dotenv
+load_dotenv()   # ✅ loads .env (local) or Vercel env vars
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.database import Base, engine
-from app.routers import professional_auth
-from app.routers import professional_dashboard
-from app.routers import professional_jobs
 
+from app.core.database import Base, engine
+from app.routers import professional_auth, professional_dashboard, professional_jobs
 from app.routers import (
     auth,
     user,
@@ -20,11 +21,9 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="HomeServ API", version="1.0.0")
 
-from fastapi.middleware.cors import CORSMiddleware
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],   # tighten later for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,8 +40,6 @@ app.include_router(contact.router)
 app.include_router(professional_auth.router)
 app.include_router(professional_dashboard.router)
 app.include_router(professional_jobs.router)
-
-
 
 @app.get("/")
 def root():
