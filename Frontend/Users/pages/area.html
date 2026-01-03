@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Area – HomeServ</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/area.css">
+
+  <script>
+    const user = localStorage.getItem("user");
+    if (!user) {
+      window.location.href = "../pages/login.html";
+    }
+  </script>
+</head>
+
+<body class="area-page">
+
+  <header>
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">HomeServ</a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../pages/packages.html">Packages</a>
+        <a href="../pages/about_us.html">About Us</a>
+        <a href="../pages/contact.html">Contact</a>
+        <a href="../pages/profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="area-container">
+    <div class="container">
+
+      <div class="section-header">
+        <a href="../index.html" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <h2>Select Your Area</h2>
+      </div>
+
+      <div class="areas-grid" id="areasGrid"></div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 HomeServ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../scripts/area.js"></script>
+
+</body>
+</html>

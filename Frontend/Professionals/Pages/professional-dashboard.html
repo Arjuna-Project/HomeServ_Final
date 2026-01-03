@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Professional Dashboard – HomeServ</title>
+  <link rel="stylesheet" href="../css/pro-dashboard.css" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="pro-header">
+  <div class="pro-container">
+    <div class="logo">HomeServ</div>
+
+    <nav class="pro-nav">
+      <a href="professional-dashboard.html" class="active">Dashboard</a>
+      <!-- <a href="job-requests.html">Job Requests</a> -->
+      <a href="my-jobs.html">My Jobs</a>
+      <!-- <a href="professional-earnings.html">Earnings</a>
+      <a href="professional-profile.html">Profile</a> -->
+    </nav>
+    <div class="user-menu">
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="pro-main">
+  <div class="pro-container">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <a href="../index.html" class="back-btn"><- Back to Home</a>
+      <h2>Dashboard</h2>
+    </div>
+
+    <!-- DASHBOARD CARDS -->
+    <div class="card">
+  <p>Pending Jobs</p>
+  <h3 id="pendingJobs">0</h3>
+</div>
+
+<div class="card">
+  <p>Completed Jobs</p>
+  <h3 id="completedJobs">0</h3>
+</div>
+
+<div class="card">
+  <p>Total Earnings</p>
+  <h3 id="totalEarnings">₹ 0</h3>
+</div>
+
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="pro-footer">
+  © 2025 HomeServ. All rights reserved.
+</footer>
+<script src="../scripts/pro-dashboard.js"></script>
+</body>
+</html>

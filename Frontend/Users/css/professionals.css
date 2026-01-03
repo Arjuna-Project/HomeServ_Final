@@ -1,0 +1,201 @@
+/* ================= PAGE ================= */
+
+.professionals-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.professionals-container {
+  flex: 1;
+  padding: 48px 0;
+}
+
+/* ================= HEADER ================= */
+
+.section-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.section-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.back-link {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2563eb;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ================= LIST ================= */
+
+.professionals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ================= CARD ================= */
+
+.pro-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+  transition: all 0.25s ease;
+}
+
+.pro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+}
+
+/* ================= AVATAR ================= */
+
+.pro-avatar {
+  width: 52px;
+  height: 52px;
+}
+
+.avatar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= INFO ================= */
+
+.pro-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.pro-stats {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.pro-stats i {
+  color: #f59e0b;
+  margin-right: 4px;
+}
+
+.jobs {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ================= PRICE ================= */
+
+.pro-price {
+  text-align: right;
+}
+
+.price {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.price strong {
+  display: block;
+  font-size: 17px;
+  color: #10b981;
+  font-weight: 700;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-book {
+  justify-self: end;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-book:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .pro-card {
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .section-header {
+    position: static;
+  }
+
+  .back-link {
+    position: static;
+    transform: none;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .pro-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .pro-price,
+  .btn-book {
+    grid-column: 1 / -1;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .btn-book {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .professionals-container {
+    padding: 32px 16px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .pro-card {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,169 @@
+.help-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.help-container {
+  flex: 1;
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b82f6;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.back-link:hover {
+  color: #2563eb;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.help-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.help-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.help-label {
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 4px;
+  max-width: 400px;
+  margin: 0 auto;
+  transition: all 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: #fff;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: #1f2937;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.search-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .help-container {
+    padding: 50px 24px;
+  }
+  .help-card {
+    padding: 36px 28px;
+  }
+  .section-header h2 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .help-container {
+    padding: 30px 16px;
+  }
+  .help-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+  .help-label {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .search-box {
+    max-width: 100%;
+  }
+  .search-input {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  .search-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .help-container {
+    padding: 24px 12px;
+  }
+  .help-card {
+    padding: 24px 16px;
+  }
+  .section-header h2 {
+    font-size: 1.4rem;
+  }
+  .help-label {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up – HomeServ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/signup.css">
+
+</head>
+<body class="signup-page">
+  <header>
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">HomeServ</a>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../pages/about_us.html">About Us</a>
+        <a href="../pages/contact.html">Contact</a>
+      </nav>
+      <div class="user-menu">
+        <a href="../pages/login.html">Login</a>
+        <a href="../pages/signup.html">Signup</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+    <section class="signup-card">
+      <h1>Get Started</h1>
+      <p class="subtitle">Sign up to your HomeServ account</p>
+
+      <form class="signup-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="mobile">Mobile number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <label for="confirm">Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" placeholder="Re-enter password" required>
+
+        <button type="submit" class="btn-primary">Sign Up</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 HomeServ. All rights reserved.</p>
+    </div>
+  </footer>
+<script src="../scripts/signup.js"></script>
+</body>
+</html>

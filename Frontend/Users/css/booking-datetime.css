@@ -1,0 +1,221 @@
+.booking-datetime-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.datetime-container {
+  flex: 1;
+  padding: 40px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b82f6;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.back-link:hover {
+  color: #2563eb;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+}
+
+.datetime-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.datetime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.date-group {
+  margin-bottom: 28px;
+}
+
+.time-group {
+  margin-bottom: 28px;
+}
+
+.date-group label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.time-group label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.date-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.date-btn {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.date-btn:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+.date-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  justify-content: center;
+}
+
+.time-btn {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-btn:hover {
+  background: #ecfdf5;
+  border-color: #10b981;
+  color: #166534;
+}
+
+.btn-continue {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 32px auto 0;
+  background: #10b981;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 999px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-continue:hover {
+  background: #059669;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+.date-btn,
+.time-btn {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.date-btn.active,
+.time-btn.active {
+  background: #3b82f6;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .datetime-card {
+    padding: 32px 24px;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .datetime-container {
+    padding: 30px 16px;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .datetime-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .date-group label,
+  .time-group label {
+    font-size: 15px;
+  }
+
+  .time-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn-continue {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .time-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .date-btn {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+}

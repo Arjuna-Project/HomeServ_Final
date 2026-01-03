@@ -1,0 +1,109 @@
+.area-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+.area-container {
+  flex: 1;
+  padding: 40px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b82f6;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.area-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.area-card:hover {
+  transform: translateY(-6px);
+}
+
+.area-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.area-info {
+  padding: 16px;
+  text-align: center;
+}
+
+.area-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.area-info p {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.btn-select {
+  display: inline-block;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-select:hover {
+  background: #2563eb;
+}
+
+@media (max-width: 1200px) {
+  .areas-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+}

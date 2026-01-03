@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Date & Time – HomeServ</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/booking-datetime.css">
+</head>
+
+<body class="booking-datetime-page">
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">HomeServ</a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="datetime-container">
+  <div class="container">
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+      <a href="../pages/booking.html" class="back-link">
+        ← Back
+      </a>
+      <h2>Select Date & Time</h2>
+      <p class="subtitle">Choose when you'd like the service</p>
+    </div>
+
+    <!-- CARD -->
+    <div class="datetime-card">
+
+      <!-- DATE -->
+      <div class="date-group">
+        <label>Select Date</label>
+        <div class="date-buttons" id="dateButtons"></div>
+      </div>
+
+      <!-- TIME -->
+      <div class="time-group">
+        <label>Select Time</label>
+        <div class="time-grid">
+          <button type="button" class="time-btn" data-time="09:00">9:00 AM</button>
+          <button type="button" class="time-btn" data-time="10:00">10:00 AM</button>
+          <button type="button" class="time-btn" data-time="11:00">11:00 AM</button>
+          <button type="button" class="time-btn" data-time="12:00">12:00 PM</button>
+          <button type="button" class="time-btn" data-time="14:00">2:00 PM</button>
+          <button type="button" class="time-btn" data-time="15:00">3:00 PM</button>
+          <button type="button" class="time-btn" data-time="16:00">4:00 PM</button>
+          <button type="button" class="time-btn" data-time="17:00">5:00 PM</button>
+        </div>
+      </div>
+
+      <button id="continueBtn" class="btn-continue">
+        Continue to Details
+      </button>
+
+    </div>
+
+  </div>
+</main>
+
+<script src="../scripts/date&time.js"></script>
+</body>
+</html>

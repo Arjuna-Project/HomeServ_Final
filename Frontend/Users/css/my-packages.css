@@ -1,0 +1,58 @@
+.my-packages-page {
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.packages-container {
+  padding: 40px 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-header h2 {
+  font-size: 26px;
+}
+
+.packages-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.package-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.package-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.package-status {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.package-status.pending { color: #b45309; }
+.package-status.completed { color: #047857; }
+.package-status.cancelled { color: #991b1b; }
+
+.cancel-link {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #ef4444;
+  text-decoration: underline;
+}

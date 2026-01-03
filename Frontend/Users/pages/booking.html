@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Booking Type – HomeServ</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/booking-type.css">
+</head>
+
+<body class="booking-type-page">
+
+<header>
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">HomeServ</a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../pages/packages.html">Packages</a>
+      <a href="../pages/about_us.html">About Us</a>
+      <a href="../pages/contact.html">Contact</a>
+      <a href="../pages/profile.html">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main class="booking-type-container">
+  <div class="container">
+
+    <div class="section-header">
+      <a href="../pages/professionals.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Professionals
+      </a>
+      <h2>Choose Booking Type</h2>
+    </div>
+
+    <div class="booking-options">
+
+      <div class="booking-card emergency" data-type="emergency">
+        <div class="card-icon danger">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h3>Emergency Service</h3>
+        <p class="tagline">Professional available within 60 minutes</p>
+
+        <div class="price">₹494</div>
+        <div class="premium-badge">30% premium for urgent service</div>
+
+        <ul class="features">
+          <li><i class="fas fa-check"></i> Immediate availability</li>
+          <li><i class="fas fa-check"></i> Priority scheduling</li>
+          <li><i class="fas fa-check"></i> Same-day service</li>
+        </ul>
+      </div>
+
+      <div class="booking-card scheduled" data-type="scheduled">
+        <div class="card-icon success">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3>Scheduled Booking</h3>
+        <p class="tagline">Choose your preferred date and time</p>
+
+        <div class="price">₹329</div>
+        <div class="standard-badge">Standard Pricing</div>
+
+        <ul class="features">
+          <li><i class="fas fa-check"></i> Flexible scheduling</li>
+          <li><i class="fas fa-check"></i> Up to 7 days in advance</li>
+          <li><i class="fas fa-check"></i> Plan ahead</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="action-center">
+      <button id="continueBtn" class="btn-continue">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 HomeServ. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../scripts/bookings.js"></script>
+
+</body>
+</html>
