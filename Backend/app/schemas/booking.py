@@ -13,12 +13,12 @@ class BookingBase(BaseModel):
     total_price: float
     details: str
 
-
 class BookingCreate(BaseModel):
     user_id: int
     area_id: int
-    service_id: Optional[int] = None   
-    professional_id: Optional[int] = None
+    package_id: int | None = None
+    service_id: int | None = None
+    professional_id: int | None = None
     scheduled_at: datetime
     total_price: float
     details: str
