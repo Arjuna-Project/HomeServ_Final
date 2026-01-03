@@ -2,13 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookingTypeInput = document.getElementById("bookingType");
   const form = document.getElementById("bookingForm");
 
-  const bookingType = localStorage.getItem("bookingType");
+  const bookingType = localStorage.getItem("bookingType"); // "emergency" | "scheduled"
   const selectedPackage = JSON.parse(localStorage.getItem("selectedPackage"));
   const user = JSON.parse(localStorage.getItem("user"));
   const area = JSON.parse(localStorage.getItem("selectedArea"));
   const service = JSON.parse(localStorage.getItem("selectedService"));
   const professional = JSON.parse(localStorage.getItem("selectedProfessional"));
 
+  /* ===============================
+     BASIC VALIDATION
+  ================================ */
   if (!user || !area) {
     alert("Booking data missing. Please start again.");
     window.location.href = "../index.html";
@@ -21,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  /* ===============================
+     DISPLAY BOOKING TYPE
+  ================================ */
   if (selectedPackage) {
     bookingTypeInput.value = selectedPackage.name;
   } else if (bookingType === "emergency") {
@@ -29,20 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
     bookingTypeInput.value = "Scheduled Booking";
   }
 
+  /* ===============================
+     FORM SUBMIT
+  ================================ */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const isPackageBooking = !!selectedPackage;
+    const isEmergencyBooking = bookingType === "emergency";
+
+    /* ===============================
+       SCHEDULED TIME
+    ================================ */
     let scheduledAt;
 
-    if (selectedPackage) {
+    if (isPackageBooking || isEmergencyBooking) {
       scheduledAt = new Date();
-    }
-
-    else if (bookingType === "emergency") {
-      scheduledAt = new Date();
-    }
-
-    else {
+    } else {
       const date = localStorage.getItem("bookingDate");
       const time = localStorage.getItem("bookingTime");
 
@@ -54,34 +63,59 @@ document.addEventListener("DOMContentLoaded", () => {
       scheduledAt = new Date(`${date}T${time}:00`);
     }
 
+    /* ===============================
+       PRICE
+    ================================ */
     let price = 329;
-    if (bookingType === "emergency") price = 494;
-    if (selectedPackage) price = selectedPackage.price;
+    if (isEmergencyBooking) price = 494;
+    if (isPackageBooking) price = selectedPackage.price;
 
+    /* ===============================
+       BASE PAYLOAD
+    ================================ */
     const payload = {
       user_id: user.user_id,
       area_id: area.area_id,
-      service_id: selectedPackage ? 0 : service.service_id,
-      professional_id: selectedPackage ? 0 : professional.professional_id,
       scheduled_at: scheduledAt.toISOString(),
       total_price: price,
       details: JSON.stringify({
-        booking_type: selectedPackage
-          ? `package:${selectedPackage.name}`
-          : bookingType
+        booking_type: isPackageBooking
+          ? "package"
+          : isEmergencyBooking
+          ? "emergency"
+          : "scheduled"
       })
     };
 
+    /* ===============================
+       BOOKING TYPE HANDLING
+    ================================ */
+    if (isPackageBooking) {
+      payload.package_id = selectedPackage.package_id;
+      payload.service_id = null;
+      payload.professional_id = null;
+    } else {
+      payload.package_id = null;
+      payload.service_id = service.service_id;
+      payload.professional_id = professional.professional_id;
+    }
+
+    /* ===============================
+       API CALL (PRODUCTION)
+    ================================ */
     try {
-      const res = await fetch("http://127.0.0.1:8000/bookings/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+      const res = await fetch(
+        "https://home-serv-final.vercel.app/bookings/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }
+      );
 
       if (!res.ok) {
         const err = await res.text();
-        console.error(err);
+        console.error("Booking failed:", err);
         alert("Booking failed");
         return;
       }
@@ -92,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../pages/confirm.html";
 
     } catch (err) {
-      console.error(err);
+      console.error("Network error:", err);
       alert("Something went wrong");
     }
   });
