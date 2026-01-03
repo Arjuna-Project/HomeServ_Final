@@ -1,30 +1,90 @@
 @import url("pro-dashboard.css");
 
-.job-card {
-  background: var(--card);
-  padding: 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+/* Jobs grid */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
+
+/* Job card */
 .job-card {
-  background: #fff;
+  background: #ffffff;
   padding: 1.5rem;
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.job-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.job-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+
+/* Buttons */
 .job-card button {
   margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.7rem 1.2rem;
   border: none;
   border-radius: 8px;
   background: #4caf50;
-  color: white;
+  color: #fff;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
+.job-card button:hover {
+  background: #43a047;
+}
+
+/* Completed label */
 .completed-label {
-  color: green;
+  color: #2e7d32;
   font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .pro-nav {
+    gap: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header-flex {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  .pro-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .job-card {
+    padding: 1.2rem;
+  }
 }
