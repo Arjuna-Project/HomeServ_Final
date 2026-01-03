@@ -18,3 +18,19 @@ fetch(`http://127.0.0.1:8000/professionals/dashboard/${professionalId}`)
     console.error(err);
     alert("Failed to load dashboard");
   });
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // 🔥 THIS is the key line
+    localStorage.removeItem("professional_id");
+
+    // optional cleanup
+    localStorage.removeItem("professional");
+
+    // redirect to login
+    window.location.href = "professional_login.html";
+  });
+}
