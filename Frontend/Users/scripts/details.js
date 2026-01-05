@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================ */
     try {
       const res = await fetch(
-        "https://home-serv-final.vercel.app/bookings/",
+        "https://homeserv-final-3.onrender.com/bookings/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

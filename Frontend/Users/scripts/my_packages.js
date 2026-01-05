@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(
-      `http://127.0.0.1:8000/bookings/user/${user.user_id}`
+      `https://homeserv-final-3.onrender.com/bookings/user/${user.user_id}`
     );
 
     if (!res.ok) throw new Error("Failed");

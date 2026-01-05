@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(
-      `http://127.0.0.1:8000/professionals/search?area_id=${areaId}&service_id=${serviceId}`
+      `https://homeserv-final-3.onrender.com/professionals/search?area_id=${areaId}&service_id=${serviceId}`
     );
 
     const professionals = await res.json();

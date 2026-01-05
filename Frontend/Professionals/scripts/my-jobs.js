@@ -3,7 +3,7 @@ if (!professionalId) {
   window.location.href = "professional_login.html";
 }
 
-fetch(`http://127.0.0.1:8000/professionals/jobs/my-jobs/${professionalId}`)
+fetch(`https://homeserv-final-3.onrender.com/professionals/jobs/my-jobs/${professionalId}`)
   .then(res => res.json())
   .then(jobs => {
     const container = document.getElementById("myJobs");

@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://homeserv-final-3.onrender.com";
 
 async function loadAreas() {
   const grid = document.getElementById("areasGrid");

@@ -11,7 +11,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  const res = await fetch("http://127.0.0.1:8000/professionals/login", {
+  const res = await fetch("https://homeserv-final-3.onrender.com/professionals/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
