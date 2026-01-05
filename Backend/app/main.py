@@ -13,7 +13,7 @@ from app.routers import (
     professional_dashboard,
     professional_jobs)
 
-app = FastAPI(title="HomeServ API")
+app = FastAPI(title="HomeServ API", root_path="/api")
 
 app.add_middleware(
     CORSMiddleware,
