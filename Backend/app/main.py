@@ -1,5 +1,27 @@
 from fastapi import FastAPI
-from app.routers import auth 
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.routers import auth
+
+app = FastAPI(title="HomeServ API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://home-serv-final.vercel.app"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth.router)
+
+@app.get("/")
+def root():
+    return {"message": "Backend alive"}
+
+
 # from fastapi import FastAPI
 # from fastapi.middleware.cors import CORSMiddleware
 
@@ -91,11 +113,4 @@ from app.routers import auth
 # def root():
 #     return {"message": "HomeServ Backend Running 🚀"}
 
-app = FastAPI()
-
-app.include_router(auth.router)
-
-@app.get("/")
-def root():
-    return {"message": "Backend alive"}
 
