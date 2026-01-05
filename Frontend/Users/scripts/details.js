@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const service = JSON.parse(localStorage.getItem("selectedService"));
   const professional = JSON.parse(localStorage.getItem("selectedProfessional"));
 
-  /* ===============================
-     BASIC VALIDATION
-  ================================ */
   if (!user || !area) {
     alert("Booking data missing. Please start again.");
     window.location.href = "../index.html";
@@ -24,9 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  /* ===============================
-     DISPLAY BOOKING TYPE
-  ================================ */
   if (selectedPackage) {
     bookingTypeInput.value = selectedPackage.name;
   } else if (bookingType === "emergency") {
@@ -35,18 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     bookingTypeInput.value = "Scheduled Booking";
   }
 
-  /* ===============================
-     FORM SUBMIT
-  ================================ */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const isPackageBooking = !!selectedPackage;
     const isEmergencyBooking = bookingType === "emergency";
 
-    /* ===============================
-       SCHEDULED TIME
-    ================================ */
     let scheduledAt;
 
     if (isPackageBooking || isEmergencyBooking) {
@@ -63,16 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scheduledAt = new Date(`${date}T${time}:00`);
     }
 
-    /* ===============================
-       PRICE
-    ================================ */
     let price = 329;
     if (isEmergencyBooking) price = 494;
     if (isPackageBooking) price = selectedPackage.price;
 
-    /* ===============================
-       BASE PAYLOAD
-    ================================ */
     const payload = {
       user_id: user.user_id,
       area_id: area.area_id,
@@ -87,9 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     };
 
-    /* ===============================
-       BOOKING TYPE HANDLING
-    ================================ */
     if (isPackageBooking) {
       payload.package_id = selectedPackage.package_id;
       payload.service_id = null;
@@ -100,18 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
       payload.professional_id = professional.professional_id;
     }
 
-    /* ===============================
-       API CALL (PRODUCTION)
-    ================================ */
     try {
       const res = await fetch(
-        "https://homeserv-final-3.onrender.com/bookings/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }
-      );
+  `${API_BASE}/bookings/`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  }
+);
+
 
       if (!res.ok) {
         const err = await res.text();

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function loadBookings() {
     try {
       const res = await fetch(
-        `https://homeserv-final-3.onrender.com/bookings/user/${user.user_id}`
+        `${API_BASE}/bookings/user/${user.user_id}`
       );
 
       if (!res.ok) throw new Error("Failed to fetch bookings");

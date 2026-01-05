@@ -1,5 +1,3 @@
-const API_BASE = "https://homeserv-final-3.onrender.com";
-
 const selectedArea = JSON.parse(localStorage.getItem("selectedArea"));
 if (!selectedArea) {
   window.location.href = "../pages/area.html";

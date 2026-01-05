@@ -1,5 +1,3 @@
-const API_BASE = "https://homeserv-final-3.onrender.com";
-
 const signupForm = document.querySelector(".signup-form");
 
 signupForm.addEventListener("submit", async (e) => {

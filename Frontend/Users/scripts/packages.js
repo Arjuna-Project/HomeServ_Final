@@ -5,11 +5,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!container) return;
 
   try {
-    const res = await fetch("https://homeserv-final-3.onrender.com/packages/");
-    if (!res.ok) throw new Error("Failed to load packages");
+    const res = await fetch(`${API_BASE}/packages/`);
+if (!res.ok) throw new Error("Failed to load packages");
 
-    const packages = await res.json();
-    container.innerHTML = "";
+const packages = await res.json();
+container.innerHTML = "";
+
 
     if (packages.length === 0) {
       container.innerHTML = "<p>No packages available</p>";

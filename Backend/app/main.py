@@ -23,7 +23,7 @@ app = FastAPI(title="HomeServ API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # tighten later for production
+    allow_origins=["https://teal-sfogliatella-1fc33b.netlify.app/"],   # tighten later for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

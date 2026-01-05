@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let booking;
   try {
-    const res = await fetch(`https://homeserv-final-3.onrender.com/bookings/${bookingId}`);
+    const res = await fetch(`${API_BASE}/bookings/${bookingId}`);
     if (!res.ok) throw new Error("API failed");
     booking = await res.json();
   } catch (e) {
