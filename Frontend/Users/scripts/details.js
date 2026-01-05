@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!user || !area) {
     alert("Booking data missing. Please start again.");
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
     return;
   }
 
   if (!selectedPackage && (!service || !professional)) {
     alert("Booking data missing. Please start again.");
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
     return;
   }
 

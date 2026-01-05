@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!bookingId) {
     alert("No booking found");
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
     return;
   }
 

@@ -1,5 +1,34 @@
 {
+  "builds": [
+    {
+      "src": "Backend/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "Frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
-    { "src": "/", "dest": "/Frontend/index.html" }
+    {
+      "src": "/api/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/openapi.json",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/docs",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/redoc",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Frontend/$1"
+    }
   ]
 }
