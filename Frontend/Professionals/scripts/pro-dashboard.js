@@ -4,7 +4,7 @@ if (!professionalId) {
   window.location.href = "professional_login.html";
 }
 
-fetch(`https://homeserv-final-3.onrender.com/professionals/dashboard/${professionalId}`)
+fetch(`${API_BASE}/professionals/dashboard/${professionalId}`)
   .then(res => {
     if (!res.ok) throw new Error("API error");
     return res.json();

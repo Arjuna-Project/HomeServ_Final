@@ -1,5 +1,3 @@
-const API_BASE = "https://home-serv-final.vercel.app/";
-
 async function loadAreas() {
   const grid = document.getElementById("areasGrid");
 
