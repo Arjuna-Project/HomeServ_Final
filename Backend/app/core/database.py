@@ -4,9 +4,6 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL is not set")
-
 Base = declarative_base()
 
 _engine = None
@@ -16,11 +13,14 @@ _SessionLocal = None
 def get_engine():
     global _engine
     if _engine is None:
+        if not DATABASE_URL:
+            raise RuntimeError("DATABASE_URL is not set")
         _engine = create_engine(
             DATABASE_URL,
             pool_pre_ping=True
         )
     return _engine
+
 
 
 def get_session():
