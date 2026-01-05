@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.routers import auth 
 # from fastapi import FastAPI
 # from fastapi.middleware.cors import CORSMiddleware
 
@@ -91,6 +92,8 @@ from fastapi import FastAPI
 #     return {"message": "HomeServ Backend Running 🚀"}
 
 app = FastAPI()
+
+app.include_router(auth.router)
 
 @app.get("/")
 def root():
