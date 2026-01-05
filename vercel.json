@@ -15,6 +15,38 @@
       "dest": "Backend/index.py"
     },
     {
+      "src": "/auth/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/users/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/areas/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/services/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/professionals/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/packages/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/bookings/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
+      "src": "/contact/(.*)",
+      "dest": "Backend/index.py"
+    },
+    {
       "src": "/openapi.json",
       "dest": "Backend/index.py"
     },
