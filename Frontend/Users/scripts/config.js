@@ -1,1 +1,1 @@
-const API_BASE = "https://home-serv-final.vercel.app/";
+window.API_BASE = "https://home-serv-final.vercel.app/";
