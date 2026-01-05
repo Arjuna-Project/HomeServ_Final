@@ -1,11 +1,13 @@
 async function loadAreas() {
   const grid = document.getElementById("areasGrid");
 
+  if (!grid) return;
+
   try {
-    const res = await fetch(`${API_BASE}/areas/`);
+    const res = await fetch(`${window.API_BASE}/areas/`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch areas");
+      throw new Error();
     }
 
     const areas = await res.json();
@@ -44,9 +46,8 @@ async function loadAreas() {
       grid.appendChild(card);
     });
 
-  } catch (error) {
-    console.error("Area load error:", error);
-    grid.innerHTML = "<p>Unable to load areas. Try again later.</p>";
+  } catch (err) {
+    grid.innerHTML = "<p>Unable to load areas</p>";
   }
 }
 

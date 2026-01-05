@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const list = document.querySelector(".professionals-list");
 
+  if (!list) return;
+
   const selectedArea = JSON.parse(localStorage.getItem("selectedArea"));
   const selectedService = JSON.parse(localStorage.getItem("selectedService"));
 
@@ -9,17 +11,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const areaId = Number(selectedArea.area_id || selectedArea.id);
-  const serviceId = Number(selectedService.service_id || selectedService.id);
-
-  console.log("AREA:", areaId, "SERVICE:", serviceId);
+  const areaId = Number(selectedArea.area_id);
+  const serviceId = Number(selectedService.service_id);
 
   list.innerHTML = "<p>Loading professionals...</p>";
 
   try {
     const res = await fetch(
-      `${API_BASE}/professionals/search?area_id=${areaId}&service_id=${serviceId}`
+      `${window.API_BASE}/professionals/search?area_id=${areaId}&service_id=${serviceId}`
     );
+
+    if (!res.ok) {
+      throw new Error();
+    }
 
     const professionals = await res.json();
     list.innerHTML = "";
@@ -37,28 +41,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="pro-avatar">
           <div class="avatar-circle">${p.name.charAt(0)}</div>
         </div>
-
         <div class="pro-info">
           <h3>${p.name}</h3>
           <div class="pro-stats">
-            <i class="fas fa-star"></i> ${p.rating}
+            <i class="fas fa-star"></i> ${p.rating ?? 0}
           </div>
           <p class="jobs">Verified Professional</p>
         </div>
-
         <button class="btn-book">Book Now</button>
       `;
 
-      card.querySelector(".btn-book").onclick = () => {
+      card.querySelector(".btn-book").addEventListener("click", () => {
         localStorage.setItem("selectedProfessional", JSON.stringify(p));
         window.location.href = "../pages/booking.html";
-      };
+      });
 
       list.appendChild(card);
     });
 
   } catch (err) {
-    console.error(err);
     list.innerHTML = "<p>Failed to load professionals</p>";
   }
 });

@@ -1,37 +1,33 @@
-const API_BASE = window.API_BASE;
-
-// const loginForm = document.querySelector(".login-form");
 const loginForm = document.querySelector(".login-form");
-if (!loginForm) {
-  console.warn("login form not found");
-  // return;
-}
 
-loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  try {
-    const res = await fetch(`${API_BASE}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const res = await fetch(`${window.API_BASE}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.detail || "Login failed");
-      return;
+      if (!res.ok) {
+        alert(data.detail || "Login failed");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify(data));
+      window.location.href = "../pages/area.html";
+
+    } catch (err) {
+      alert("Server error");
     }
-
-    localStorage.setItem("user", JSON.stringify(data));
-
-    window.location.href = "../pages/area.html";
-
-  } catch (err) {
-    alert("Server error");
-  }
-});
+  });
+}

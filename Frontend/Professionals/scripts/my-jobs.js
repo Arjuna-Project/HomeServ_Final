@@ -1,12 +1,22 @@
-const professionalId = localStorage.getItem("professional_id");
-if (!professionalId) {
-  window.location.href = "professional_login.html";
-}
+document.addEventListener("DOMContentLoaded", async () => {
+  const professionalId = localStorage.getItem("professional_id");
+  const container = document.getElementById("myJobs");
 
-fetch(`${API_BASE}/professionals/jobs/my-jobs/${professionalId}`)
-  .then(res => res.json())
-  .then(jobs => {
-    const container = document.getElementById("myJobs");
+  if (!professionalId) {
+    window.location.href = "professional_login.html";
+    return;
+  }
+
+  if (!container) return;
+
+  try {
+    const res = await fetch(
+      `${window.API_BASE}/professionals/jobs/my-jobs/${professionalId}`
+    );
+
+    if (!res.ok) throw new Error();
+
+    const jobs = await res.json();
     container.innerHTML = "";
 
     if (jobs.length === 0) {
@@ -23,49 +33,37 @@ fetch(`${API_BASE}/professionals/jobs/my-jobs/${professionalId}`)
         <p><strong>User:</strong> ${job.user}</p>
         <p><strong>Type:</strong> ${job.booking_type}</p>
         <p><strong>Status:</strong> ${job.status}</p>
-        <p><strong>Price:</strong> ₹ ${job.price}</p>
-
+        <p><strong>Price:</strong> ₹${job.price}</p>
         ${
           job.status !== "completed"
-            ? `<button class="btn-primary" onclick="completeJob(${job.booking_id})">
+            ? `<button class="btn-primary" data-id="${job.booking_id}">
                  Complete Job
                </button>`
             : `<span class="badge success">Completed</span>`
         }
       `;
 
+      const btn = card.querySelector(".btn-primary");
+
+      if (btn) {
+        btn.addEventListener("click", async () => {
+          try {
+            const res = await fetch(
+              `${window.API_BASE}/bookings/${job.booking_id}/complete`,
+              { method: "PUT" }
+            );
+
+            if (!res.ok) return;
+            window.location.reload();
+
+          } catch (err) {}
+        });
+      }
+
       container.appendChild(card);
     });
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Failed to load jobs");
-  });
 
-function completeJob(bookingId) {
-  fetch(`http://127.0.0.1:8000/bookings/${bookingId}/complete`, {
-    method: "PUT"
-  })
-  .then(res => {
-    if (!res.ok) throw new Error();
-    location.reload();
-  })
-  .catch(() => alert("Failed to complete job"));
-}
-
-const logoutBtn = document.getElementById("logoutBtn");
-
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // 🔥 THIS is the key line
-    localStorage.removeItem("professional_id");
-
-    // optional cleanup
-    localStorage.removeItem("professional");
-
-    // redirect to login
-    window.location.href = "professional_login.html";
-  });
-}
+  } catch (err) {
+    container.innerHTML = "<p>Failed to load jobs</p>";
+  }
+});

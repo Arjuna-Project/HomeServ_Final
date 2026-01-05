@@ -1,87 +1,48 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("confirm.js loaded");
-
   const bookingId = localStorage.getItem("bookingId");
   if (!bookingId) {
-    alert("Booking ID not found");
+    window.location.href = "../../index.html";
     return;
   }
 
-  let booking;
   try {
-    const res = await fetch(`${API_BASE}/bookings/${bookingId}`);
-    if (!res.ok) throw new Error("API failed");
-    booking = await res.json();
-  } catch (e) {
-    console.error("Booking fetch error", e);
-    alert("Unable to load booking");
-    return;
-  }
+    const res = await fetch(`${window.API_BASE}/bookings/${bookingId}`);
+    if (!res.ok) return;
 
-  console.log("Booking from API:", booking);
+    const booking = await res.json();
+    const details = booking.details ? JSON.parse(booking.details) : {};
 
-  let details = {};
-  try {
-    details = JSON.parse(booking.details || "{}");
-  } catch {
-    details = {};
-  }
-
-  setText("bookingId", `HS${booking.booking_id}`);
-  setText("amount", booking.total_price);
-
-  const area = JSON.parse(localStorage.getItem("selectedArea"));
-  setText("areaName", area?.name || "N/A");
-
-  const bookingType = details.booking_type || "unknown";
-
-  let isPackage = false;
-  let isEmergency = false;
-
-  if (bookingType.startsWith("package:")) {
-    isPackage = true;
-    setText("type", bookingType.replace("package:", ""));
-  } else if (bookingType === "emergency") {
-    isEmergency = true;
-    setText("type", "Emergency Service");
-  } else {
-    setText("type", "Scheduled Booking");
-  }
-
-  if (isPackage) {
-    hide("serviceRow");
-    hide("professionalRow");
-  } else {
+    const area = JSON.parse(localStorage.getItem("selectedArea"));
     const service = JSON.parse(localStorage.getItem("selectedService"));
     const professional = JSON.parse(localStorage.getItem("selectedProfessional"));
 
-    setText("serviceName", service?.name || "N/A");
-    setText("professionalName", professional?.name || "N/A");
-  }
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
 
-  if (isPackage) {
-    hide("dateTimeRow");
-  } else if (isEmergency) {
-    setText("dateTime", "Immediate Service");
-  } else {
-    const dt = new Date(booking.scheduled_at);
-    setText(
-      "dateTime",
-      dt.toLocaleDateString("en-IN") +
-        " at " +
-        dt.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })
-    );
-  }
+    set("bookingId", `HS${booking.booking_id}`);
+    set("amount", booking.total_price);
+    set("areaName", area?.name || "N/A");
 
-  function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-    else console.warn(`⚠ Missing element #${id}`);
-  }
+    if (details.booking_type === "emergency") {
+      set("type", "Emergency Service");
+      set("dateTime", "Immediate Service");
+    } else if (details.booking_type === "package") {
+      set("type", "Package Service");
+    } else {
+      set("type", "Scheduled Booking");
+      const dt = new Date(booking.scheduled_at);
+      set(
+        "dateTime",
+        dt.toLocaleDateString("en-IN") +
+          " at " +
+          dt.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })
+      );
+    }
 
-  function hide(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "none";
-    else console.warn(`⚠ Missing element #${id}`);
-  }
+    if (service) set("serviceName", service.name);
+    if (professional) set("professionalName", professional.name);
+
+  } catch (err) {}
 });

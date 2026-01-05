@@ -1,4 +1,5 @@
 const selectedArea = JSON.parse(localStorage.getItem("selectedArea"));
+
 if (!selectedArea) {
   window.location.href = "../pages/area.html";
 }
@@ -6,11 +7,13 @@ if (!selectedArea) {
 async function loadServices() {
   const grid = document.getElementById("servicesGrid");
 
+  if (!grid) return;
+
   try {
-    const res = await fetch(`${API_BASE}/services/`);
+    const res = await fetch(`${window.API_BASE}/services/`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch services");
+      throw new Error();
     }
 
     const services = await res.json();
@@ -42,8 +45,7 @@ async function loadServices() {
       grid.appendChild(card);
     });
 
-  } catch (error) {
-    console.error("Service load error:", error);
+  } catch (err) {
     grid.innerHTML = "<p>Unable to load services</p>";
   }
 }

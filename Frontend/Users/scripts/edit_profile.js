@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user) {
@@ -7,22 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  document.getElementById("editName").value = user.name || "";
-  document.getElementById("editEmail").value = user.email || "";
-  document.getElementById("editPhone").value = user.phone || "";
-
+  const nameInput = document.getElementById("editName");
+  const emailInput = document.getElementById("editEmail");
+  const phoneInput = document.getElementById("editPhone");
+  const passwordInput = document.getElementById("editPassword");
+  const confirmInput = document.getElementById("editConfirmPassword");
   const form = document.getElementById("editProfileForm");
+
+  if (nameInput) nameInput.value = user.name || "";
+  if (emailInput) emailInput.value = user.email || "";
+  if (phoneInput) phoneInput.value = user.phone || "";
+
+  if (!form) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = document.getElementById("editName").value.trim();
-    const email = document.getElementById("editEmail").value.trim();
-    const phone = document.getElementById("editPhone").value.trim();
-    const password = document.getElementById("editPassword").value;
-    const confirmPassword = document.getElementById("editConfirmPassword").value;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const password = passwordInput.value;
+    const confirm = confirmInput.value;
 
-    if (password && password !== confirmPassword) {
+    if (password && password !== confirm) {
       alert("Passwords do not match");
       return;
     }
@@ -35,9 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     localStorage.setItem("user", JSON.stringify(updatedUser));
-
-    alert("Profile updated successfully");
-
     window.location.href = "../pages/profile.html";
   });
 });

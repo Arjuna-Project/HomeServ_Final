@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const form = document.getElementById("contactForm");
+
+  if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -14,22 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const res = await fetch(`${API_BASE}/contact/`, {
+      const res = await fetch(`${window.API_BASE}/contact/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(payload)
       });
 
       if (!res.ok) {
-        throw new Error("Failed to submit");
+        throw new Error();
       }
 
       window.location.href = "../pages/message_sent.html";
 
     } catch (err) {
-      console.error(err);
-      alert("Failed to send message. Please try again.");
+      alert("Failed to send message");
     }
   });
-
 });

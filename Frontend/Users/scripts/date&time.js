@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dateContainer = document.getElementById("dateButtons");
-  const timeBtns = document.querySelectorAll(".time-btn");
+  const timeButtons = document.querySelectorAll(".time-btn");
   const continueBtn = document.getElementById("continueBtn");
+
+  if (!dateContainer || !continueBtn) return;
 
   let selectedDate = null;
   let selectedTime = null;
@@ -24,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.dataset.date = d.toISOString().split("T")[0];
 
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".date-btn").forEach(b => b.classList.remove("active"));
+      document
+        .querySelectorAll(".date-btn")
+        .forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       selectedDate = btn.dataset.date;
     });
@@ -32,23 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
     dateContainer.appendChild(btn);
   }
 
-  timeBtns.forEach(btn => {
+  timeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      timeBtns.forEach(b => b.classList.remove("active"));
+      timeButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       selectedTime = btn.dataset.time;
     });
   });
 
   continueBtn.addEventListener("click", () => {
-    if (!selectedDate || !selectedTime) {
-      alert("Please select date & time");
-      return;
-    }
+    if (!selectedDate || !selectedTime) return;
 
     localStorage.setItem("bookingDate", selectedDate);
     localStorage.setItem("bookingTime", selectedTime);
-
     window.location.href = "../pages/details.html";
   });
 });
