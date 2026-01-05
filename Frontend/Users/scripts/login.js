@@ -1,4 +1,4 @@
-const API_BASE = "https://home-serv-final.vercel.app/";
+const API_BASE = window.API_BASE;
 
 // const loginForm = document.querySelector(".login-form");
 const loginForm = document.querySelector(".login-form");

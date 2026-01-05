@@ -1,3 +1,4 @@
+const API_BASE = window.API_BASE;
 const signupForm = document.querySelector(".signup-form");
 
 signupForm.addEventListener("submit", async (e) => {
