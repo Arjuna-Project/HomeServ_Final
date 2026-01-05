@@ -7,23 +7,35 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL is not set")
 
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping=True,
-    pool_size=5,
-    max_overflow=10
-)
-
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
-
 Base = declarative_base()
 
+_engine = None
+_SessionLocal = None
+
+
+def get_engine():
+    global _engine
+    if _engine is None:
+        _engine = create_engine(
+            DATABASE_URL,
+            pool_pre_ping=True
+        )
+    return _engine
+
+
+def get_session():
+    global _SessionLocal
+    if _SessionLocal is None:
+        _SessionLocal = sessionmaker(
+            autocommit=False,
+            autoflush=False,
+            bind=get_engine()
+        )
+    return _SessionLocal
+
+
 def get_db():
-    db = SessionLocal()
+    db = get_session()()
     try:
         yield db
     finally:
