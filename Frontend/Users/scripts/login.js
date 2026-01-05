@@ -4,7 +4,7 @@ const API_BASE = "https://home-serv-final.vercel.app/";
 const loginForm = document.querySelector(".login-form");
 if (!loginForm) {
   console.warn("login form not found");
-  return;
+  // return;
 }
 
 loginForm.addEventListener("submit", async (e) => {
