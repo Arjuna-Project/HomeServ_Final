@@ -17,11 +17,14 @@ app = FastAPI(title="HomeServ API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://home-serv-frontend.vercel.app"],
+    allow_origins=[
+        "https://home-serv-frontend.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 app.include_router(auth.router)
 app.include_router(user.router)
