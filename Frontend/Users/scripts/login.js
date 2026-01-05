@@ -1,7 +1,7 @@
 const API_BASE = "https://home-serv-final.vercel.app/";
 
 const loginForm = document.querySelector(".login-form");
-
+if (!loginForm) return;
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookingTypeInput = document.getElementById("bookingType");
   const form = document.getElementById("bookingForm");
 
-  const bookingType = localStorage.getItem("bookingType"); // "emergency" | "scheduled"
+  const bookingType = localStorage.getItem("bookingType"); 
   const selectedPackage = JSON.parse(localStorage.getItem("selectedPackage"));
   const user = JSON.parse(localStorage.getItem("user"));
   const area = JSON.parse(localStorage.getItem("selectedArea"));

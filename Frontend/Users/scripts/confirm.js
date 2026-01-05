@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  console.log("📦 Booking from API:", booking);
+  console.log("Booking from API:", booking);
 
   let details = {};
   try {

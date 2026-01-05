@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/bookings/${bookingId}/status?status=cancelled`,
+            `${API_BASE}/bookings/${bookingId}/status?status=cancelled`,
             { method: "PATCH" }
           );
 
