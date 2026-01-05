@@ -1,19 +1,20 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi import FastAPI
+# from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import (
-    auth,
-    user,
-    area,
-    service,
-    professionals,
-    packages,
-    bookings,
-    contact,
-    professional_auth,
-    professional_dashboard,
-    professional_jobs
-)# from dotenv import load_dotenv
+# from app.routers import (
+#     auth,
+#     user,
+#     area,
+#     service,
+#     professionals,
+#     packages,
+#     bookings,
+#     contact,
+#     professional_auth,
+#     professional_dashboard,
+#     professional_jobs)
+# # from dotenv import load_dotenv
 # load_dotenv()   # ✅ loads .env (local) or Vercel env vars
 
 # from fastapi import FastAPI
@@ -60,31 +61,38 @@ from app.routers import (
 # def root():
 #     return {"message": "HomeServ Backend Running 🚀"}
 
-app = FastAPI(title="HomeServ API", version="1.0.0")
+# app = FastAPI(title="HomeServ API", version="1.0.0")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://teal-sfogliatella-1fc33b.netlify.app"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "https://teal-sfogliatella-1fc33b.netlify.app"
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
-# Routers
-app.include_router(auth.router)
-app.include_router(user.router)
-app.include_router(area.router)
-app.include_router(service.router)
-app.include_router(professionals.router)
-app.include_router(packages.router)
-app.include_router(bookings.router)
-app.include_router(contact.router)
-app.include_router(professional_auth.router)
-app.include_router(professional_dashboard.router)
-app.include_router(professional_jobs.router)
+# # Routers
+# app.include_router(auth.router)
+# app.include_router(user.router)
+# app.include_router(area.router)
+# app.include_router(service.router)
+# app.include_router(professionals.router)
+# app.include_router(packages.router)
+# app.include_router(bookings.router)
+# app.include_router(contact.router)
+# app.include_router(professional_auth.router)
+# app.include_router(professional_dashboard.router)
+# app.include_router(professional_jobs.router)
+
+# @app.get("/")
+# def root():
+#     return {"message": "HomeServ Backend Running 🚀"}
+
+app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "HomeServ Backend Running 🚀"}
+    return {"message": "Backend alive"}
+
